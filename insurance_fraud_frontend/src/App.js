@@ -8,19 +8,20 @@ import UploadPage from "./pages/UploadPage";
 import QueuePage from "./pages/QueuePage";
 import ClaimDetailPage from "./pages/ClaimDetailPage";
 import LoginPage from "./pages/LoginPage";
+import logo from "./logo.svg";
 
 function Sidebar() {
   const navClass = ({ isActive }) => `navItem ${isActive ? "navItemActive" : ""}`;
 
   return (
     <aside className="sidebar">
-      <div className="brand">
-        <div className="brandMark" aria-hidden="true" />
+      <NavLink to="/" className="brand" aria-label="Fraud Sentinel home">
+        <img className="brandLogo" src={logo} alt="Fraud Sentinel logo" />
         <div className="brandTitle">
           <strong>Fraud Sentinel</strong>
           <span>Insurance Claims</span>
         </div>
-      </div>
+      </NavLink>
 
       <div className="navGroupLabel">Workspace</div>
       <NavLink to="/" className={navClass} end>
