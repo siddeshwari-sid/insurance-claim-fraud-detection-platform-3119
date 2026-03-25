@@ -1,104 +1,346 @@
-/* CSS Variables for Theme Management */
+/* App-wide theme (dark, modern) */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --bg: #1f2937;         /* gray-800 */
+  --surface: #111827;    /* gray-900 */
+  --surface-2: #0b1220;
+  --card: #111827;
+  --card-2: #0f172a;
+  --border: rgba(148, 163, 184, 0.16); /* slate-400/16 */
+  --text: #f9fafb;       /* gray-50 */
+  --muted: rgba(249, 250, 251, 0.72);
+  --muted-2: rgba(249, 250, 251, 0.55);
+  --primary: #3b82f6;    /* blue-500 */
+  --success: #06b6d4;    /* cyan-500 */
+  --danger: #ef4444;     /* red-500 */
+  --warning: #f59e0b;    /* amber-500 */
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --font: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+* {
+  box-sizing: border-box;
 }
 
-.App {
-  text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(59, 130, 246, 0.14), transparent 55%),
+              radial-gradient(900px 500px at 80% 10%, rgba(6, 182, 212, 0.12), transparent 55%),
+              linear-gradient(180deg, var(--bg), #0b1220 70%);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.appShell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sidebar {
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.92), rgba(17, 24, 39, 0.66));
+  border-right: 1px solid var(--border);
+  padding: 18px 14px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px 16px;
 }
 
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
+.brandMark {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 1), rgba(6, 182, 212, 1));
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.25);
+}
+
+.brandTitle {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+  line-height: 1.1;
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
-}
-
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
+.brandTitle strong {
   font-size: 14px;
-  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.brandTitle span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.navGroupLabel {
+  font-size: 11px;
+  color: var(--muted-2);
+  padding: 14px 12px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin: 4px 6px;
+  color: var(--muted);
+  border: 1px solid transparent;
+}
+
+.navItem:hover {
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--text);
+}
+
+.navItemActive {
+  background: rgba(59, 130, 246, 0.16);
+  border-color: rgba(59, 130, 246, 0.25);
+  color: var(--text);
+}
+
+.main {
+  padding: 22px 22px 42px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.pageTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pageTitle h1 {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+}
+
+.pageTitle p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.actionsRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  border: 1px solid var(--border);
+  background: rgba(17, 24, 39, 0.6);
+  color: var(--text);
+  padding: 9px 12px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  font-size: 13px;
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+.btn:hover {
+  background: rgba(17, 24, 39, 0.8);
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+.btnPrimary {
+  border-color: rgba(59, 130, 246, 0.45);
+  background: rgba(59, 130, 246, 0.18);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.btnPrimary:hover {
+  background: rgba(59, 130, 246, 0.26);
+}
+
+.btnDanger {
+  border-color: rgba(239, 68, 68, 0.45);
+  background: rgba(239, 68, 68, 0.16);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.92), rgba(15, 23, 42, 0.82));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.cardHeader h2 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.cardHeader span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kpiValue {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.kpiMeta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.badgePrimary {
+  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(59, 130, 246, 0.12);
+  color: rgba(219, 234, 254, 0.95);
+}
+
+.badgeSuccess {
+  border-color: rgba(6, 182, 212, 0.42);
+  background: rgba(6, 182, 212, 0.12);
+  color: rgba(207, 250, 254, 0.95);
+}
+
+.badgeDanger {
+  border-color: rgba(239, 68, 68, 0.42);
+  background: rgba(239, 68, 68, 0.12);
+  color: rgba(254, 226, 226, 0.95);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.table th, .table td {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.table th {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(2, 6, 23, 0.24);
+}
+
+.table tr:hover td {
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.input, .select {
+  width: 100%;
+  background: rgba(2, 6, 23, 0.35);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: var(--text);
+  outline: none;
+  font-size: 13px;
+}
+
+.input::placeholder {
+  color: rgba(249, 250, 251, 0.45);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.helpText {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.alert {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--muted);
+  background: rgba(2, 6, 23, 0.24);
+}
+
+.alertError {
+  border-color: rgba(239, 68, 68, 0.42);
+  background: rgba(239, 68, 68, 0.10);
+  color: rgba(254, 226, 226, 0.95);
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@media (max-width: 980px) {
+  .appShell {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+  .sidebar {
+    height: auto;
+    position: relative;
   }
-}
-
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+  .formRow {
+    grid-template-columns: 1fr;
   }
 }
