@@ -59,7 +59,7 @@ function Topbar() {
 
   const header = titleMap[location.pathname] || {
     title: "Claim",
-    subtitle: "Review claim details, signals, and explanations."
+    subtitle: "Review claim details and recommended next steps."
   };
 
   return (

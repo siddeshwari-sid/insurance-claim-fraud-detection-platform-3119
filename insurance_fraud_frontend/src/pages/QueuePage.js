@@ -26,7 +26,6 @@ export default function QueuePage() {
   const [minScore, setMinScore] = useState(70);
   const [status, setStatus] = useState("");
   const [q, setQ] = useState("");
-  const [sort, setSort] = useState("score_desc"); // score_desc | amount_desc
 
   useEffect(() => {
     let mounted = true;
@@ -73,12 +72,11 @@ export default function QueuePage() {
       });
 
     const sorted = [...filtered].sort((a, b) => {
-      if (sort === "amount_desc") return Number(amountOf(b) || 0) - Number(amountOf(a) || 0);
       return Number(scoreOf(b) || 0) - Number(scoreOf(a) || 0);
     });
 
     return sorted;
-  }, [claims, minScore, status, q, sort]);
+  }, [claims, minScore, status, q]);
 
   return (
     <div className="grid">
@@ -119,7 +117,7 @@ export default function QueuePage() {
         </div>
 
         <div className="formRow" style={{ marginTop: 10 }}>
-          <div>
+          <div style={{ gridColumn: "span 2" }}>
             <div className="helpText">Search</div>
             <input
               className="input"
@@ -128,17 +126,10 @@ export default function QueuePage() {
               placeholder="Claim ID, policy ID, claimant…"
             />
           </div>
-          <div>
-            <div className="helpText">Sort</div>
-            <select className="select" value={sort} onChange={(e) => setSort(e.target.value)}>
-              <option value="score_desc">Risk score (high → low)</option>
-              <option value="amount_desc">Claim amount (high → low)</option>
-            </select>
-          </div>
         </div>
 
         <div className="helpText" style={{ marginTop: 10 }}>
-          Showing <span className="mono">{loading ? "…" : rows.length}</span> claims.
+          Showing <span className="mono">{loading ? "…" : rows.length}</span> claims (sorted by score).
         </div>
       </div>
 

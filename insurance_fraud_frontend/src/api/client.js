@@ -79,17 +79,7 @@ export async function updateClaimStatus(claimId, status) {
   return request(`/claims/${encodeURIComponent(claimId)}`, { method: "PATCH", body: { status } });
 }
 
-// PUBLIC_INTERFACE
-export async function getFraudSignals() {
-  /** Fetch list of available fraud signals/rules (if backend provides). */
-  return request(`/fraud_signals`);
-}
 
-// PUBLIC_INTERFACE
-export async function getExplanation(claimId) {
-  /** Fetch AI/rule explanation for a claim. */
-  return request(`/explanation/${encodeURIComponent(claimId)}`);
-}
 
 // PUBLIC_INTERFACE
 export async function uploadCsv(file) {
