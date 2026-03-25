@@ -25,7 +25,7 @@ export default function UploadPage() {
       <div className="card" style={{ gridColumn: "span 12" }}>
         <div className="cardHeader">
           <h2>Upload claims CSV</h2>
-          <span>POST /upload_csv</span>
+          <span>Ingest and score new claims</span>
         </div>
 
         <div className="grid" style={{ gap: 12 }}>

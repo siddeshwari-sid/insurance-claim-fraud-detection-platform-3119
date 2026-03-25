@@ -136,7 +136,7 @@ export default function ClaimDetailPage() {
                   <option value="CLOSED">CLOSED</option>
                 </select>
 
-                <span className="helpText">{statusBusy ? "Saving…" : "Changes are persisted to backend."}</span>
+                <span className="helpText">{statusBusy ? "Saving…" : "Changes are saved automatically."}</span>
               </div>
 
               <div className="alert" style={{ marginTop: 14 }}>

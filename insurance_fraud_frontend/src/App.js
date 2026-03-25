@@ -37,11 +37,7 @@ function Sidebar() {
         <span>Investigator Queue</span>
       </NavLink>
 
-      <div className="navGroupLabel">Help</div>
-      <a className="navItem" href={process.env.REACT_APP_BACKEND_URL || "#"} target="_blank" rel="noreferrer">
-        <span aria-hidden="true">⎋</span>
-        <span>Backend</span>
-      </a>
+
     </aside>
   );
 }

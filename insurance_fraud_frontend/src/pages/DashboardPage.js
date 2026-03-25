@@ -148,24 +148,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      <div className="card" style={{ gridColumn: "span 4" }}>
-        <div className="cardHeader">
-          <h2>System Status</h2>
-          <span className="badge badgeSuccess">Configured</span>
-        </div>
 
-        <div className="helpText" style={{ marginBottom: 8 }}>
-          Backend API base
-        </div>
-
-        <div className="mono" style={{ fontSize: 13, lineHeight: 1.4 }}>
-          {process.env.REACT_APP_API_BASE || process.env.REACT_APP_BACKEND_URL || "http://localhost:3001"}
-        </div>
-
-        <div className="helpText" style={{ marginTop: 10 }}>
-          If requests fail, verify the backend is reachable.
-        </div>
-      </div>
 
       <div className="card" style={{ gridColumn: "span 7" }}>
         <div className="cardHeader">

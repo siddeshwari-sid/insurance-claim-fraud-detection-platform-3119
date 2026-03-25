@@ -106,9 +106,7 @@ export default function LoginPage() {
           </button>
         </div>
 
-        <div className="helpText" style={{ marginTop: 10 }}>
-          Backend API base: <span className="mono">{process.env.REACT_APP_API_BASE || process.env.REACT_APP_BACKEND_URL || "http://localhost:3001"}</span>
-        </div>
+
       </div>
     </div>
   );
