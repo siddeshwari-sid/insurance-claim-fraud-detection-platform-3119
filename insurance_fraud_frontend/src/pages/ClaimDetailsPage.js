@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getClaim, getExplanation, listFraudSignals } from "../lib/apiClient";
 import { Badge, Card, KeyValueRow, SecondaryButton } from "../components/ui/UI";
@@ -21,7 +21,7 @@ export default function ClaimDetailsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  async function load() {
+  const load = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -41,12 +41,11 @@ export default function ClaimDetailsPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [claimId]);
 
   useEffect(() => {
     load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [claimId]);
+  }, [load]);
 
   const risk = claim?.risk_score ?? claim?.riskScore ?? claim?.score;
 
